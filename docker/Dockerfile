@@ -15,4 +15,6 @@ RUN git checkout 9e1553c437183540392a7231d0788318a19b18a3
 ENV PATH=/root/.cargo/bin:$PATH
 
 RUN rustup target add x86_64-unknown-linux-musl
-CMD cargo build --target=x86_64-unknown-linux-musl --release --features=u128-support --bin=compute && bash
+RUN cargo build --target=x86_64-unknown-linux-musl --release --features=u128-support --bin=compute
+RUN sha256sum target/x86_64-unknown-linux-musl/release/compute
+CMD bash
